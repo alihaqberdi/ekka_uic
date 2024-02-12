@@ -45,11 +45,6 @@ class Product(models.Model):
     text = models.TextField()
     currency_ids = models.ManyToManyField("product.Currency", related_name='products')
 
-    # def clean(self):
-    #     if len(self.text) < 50:
-    #         raise ValidationError(_("text field: 50 belgidan kam bo'lmasligi kerak"))
-    #
-
     @staticmethod
     def __generate_slug(slug):
         data = string.ascii_lowercase

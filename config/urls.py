@@ -18,18 +18,12 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from django.conf.urls.i18n import i18n_patterns
-
-from django.views.generic import TemplateView
-
-
-class MyView(TemplateView):
-    template_name = "index.html"
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", MyView.as_view(), name="index"),
+    path("", include("common.urls")),
+    path("", include("product.urls")),
 ]
 
 if settings.DEBUG:
