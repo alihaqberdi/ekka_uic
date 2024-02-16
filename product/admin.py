@@ -1,9 +1,9 @@
 from django.contrib import admin
 
 # Register your models here.
-from product.models import Category, Size, Color, Product, ProductImage, Price, Discount, Currency
+from product.models import Category, Size, Color, Product, ProductImage, Price, Discount, Currency, Status
 
-admin.site.register([Discount, Currency])
+admin.site.register([Discount, Currency, Status])
 
 
 @admin.register(Size)
@@ -49,8 +49,8 @@ class SizeInline(admin.TabularInline):
 
 @admin.register(Category)
 class AdminCategory(admin.ModelAdmin):
-    list_display = ['id', "title", "slug"]
-    list_display_links = ['id', "title", "slug"]
+    list_display = ['id', "title", "parent"]
+    list_display_links = ['id', "title"]
     prepopulated_fields = {"slug": ("title",)}
     inlines = [ColorInline, SizeInline]
     search_fields = ["title"]

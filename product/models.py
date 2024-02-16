@@ -1,7 +1,9 @@
 from django.db import models
 from django.utils.text import slugify
 from django.core.exceptions import ValidationError
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils.translation import gettext_lazy as _
+from colorfield.fields import ColorField
 import string
 import random
 
@@ -13,6 +15,7 @@ class Category(models.Model):
     title = models.CharField(max_length=255, verbose_name=_('Category title'))
     slug = models.SlugField(max_length=255, verbose_name='Category slug',
                             unique=True)
+    parent = models.ForeignKey("self", on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return self.title
@@ -30,20 +33,29 @@ class Size(models.Model):
 class Color(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='colors')
     title = models.CharField(max_length=255)
+    color = ColorField()
     slug = models.SlugField(max_length=255, unique=True)
 
     def __str__(self):
         return self.title
 
 
+class Status(models.Model):
+    title = models.CharField(max_length=255)
+
+
 class Product(models.Model):
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
+    category = models.ManyToManyField(Category)
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True)
     discount_id = models.ForeignKey("product.Discount", on_delete=models.SET_NULL, related_name='products', null=True,
                                     blank=True)
     text = models.TextField()
-    currency_ids = models.ManyToManyField("product.Currency", related_name='products')
+    main_image = models.ImageField(null=True)
+    status = models.ForeignKey(
+        Status, on_delete=models.SET_NULL, null=True
+    )
+    currency_ids = models.ManyToManyField("product.Currency")
 
     @staticmethod
     def __generate_slug(slug):
@@ -84,7 +96,7 @@ class Discount(models.Model):
     slug = models.SlugField(max_length=255, unique=True)
     text = models.TextField()
     count = models.PositiveIntegerField(default=100)
-    discount = models.PositiveIntegerField(default=0)
+    discount = models.PositiveSmallIntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
 
     def __str__(self):
         return self.title

@@ -146,11 +146,11 @@
                                             <div class="ec-pro-image">
                                                 <a href="product-left-sidebar.html" class="image">
                                                     <img class="main-image"
-                                                        src="{% static 'assets/images/product-image/6_1.jpg' %}" alt="Product" />
+                                                        src="{{ i.main_image.url }}" alt="Product" />
                                                     <img class="hover-image"
-                                                        src="{% static 'assets/images/product-image/6_2.jpg' %}" alt="Product" />
+                                                        src="{{ i.main_image.url }}" alt="Product" />
                                                 </a>
-                                                <span class="percentage">20%</span>
+                                                <span class="percentage">{{ i.discount_id.discount }}</span>
                                                 <a href="#" class="quickview" data-link-action="quickview"
                                                     title="Quick view" data-bs-toggle="modal"
                                                     data-bs-target="#ec_quickview_modal"><i class="fi-rr-eye"></i></a>
@@ -245,65 +245,14 @@
                                 </div>
                                 <div class="ec-sb-block-content">
                                     <ul>
+                                        {% for i in category_ls %}
                                         <li>
                                             <div class="ec-sidebar-block-item">
-                                                <input type="checkbox" checked /> <a href="#">clothes</a><span
+                                                <input type="checkbox" checked /> <a href="#">{% trans i.title|title %}</a><span
                                                     class="checked"></span>
                                             </div>
                                         </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item">
-                                                <input type="checkbox" /> <a href="#">Bags</a><span
-                                                    class="checked"></span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item">
-                                                <input type="checkbox" /> <a href="#">Shoes</a><span
-                                                    class="checked"></span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item">
-                                                <input type="checkbox" /> <a href="#">cosmetics</a><span
-                                                    class="checked"></span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item">
-                                                <input type="checkbox" /> <a href="#">electrics</a><span
-                                                    class="checked"></span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item">
-                                                <input type="checkbox" /> <a href="#">phone</a><span
-                                                    class="checked"></span>
-                                            </div>
-                                        </li>
-                                        <li id="ec-more-toggle-content" style="padding: 0; display: none;">
-                                            <ul>
-                                                <li>
-                                                    <div class="ec-sidebar-block-item">
-                                                        <input type="checkbox" /> <a href="#">Watch</a><span
-                                                            class="checked"></span>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="ec-sidebar-block-item">
-                                                        <input type="checkbox" /> <a href="#">Cap</a><span
-                                                            class="checked"></span>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item ec-more-toggle">
-                                                <span class="checked"></span><span id="ec-more-toggle">More
-                                                    Categories</span>
-                                            </div>
-                                        </li>
-
+                                        {% endfor %}
                                     </ul>
                                 </div>
                             </div>
@@ -314,36 +263,14 @@
                                 </div>
                                 <div class="ec-sb-block-content">
                                     <ul>
+                                        {% for i in size_ls %}
                                         <li>
                                             <div class="ec-sidebar-block-item">
-                                                <input type="checkbox" value="" checked /><a href="#">S</a><span
+                                                <input type="checkbox" value="" checked /><a href="#">{% trans i.title %}</a><span
                                                     class="checked"></span>
                                             </div>
                                         </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item">
-                                                <input type="checkbox" value="" /><a href="#">M</a><span
-                                                    class="checked"></span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item">
-                                                <input type="checkbox" value="" /> <a href="#">L</a><span
-                                                    class="checked"></span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item">
-                                                <input type="checkbox" value="" /><a href="#">XL</a><span
-                                                    class="checked"></span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item">
-                                                <input type="checkbox" value="" /><a href="#">XXL</a><span
-                                                    class="checked"></span>
-                                            </div>
-                                        </li>
+                                        {% endfor %}
                                     </ul>
                                 </div>
                             </div>
@@ -354,46 +281,13 @@
                                 </div>
                                 <div class="ec-sb-block-content">
                                     <ul>
-                                        <li>
-                                            <div class="ec-sidebar-block-item"><span
-                                                    style="background-color:#c4d6f9;"></span></div>
-                                        </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item"><span
-                                                    style="background-color:#ff748b;"></span></div>
-                                        </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item"><span
-                                                    style="background-color:#000000;"></span></div>
-                                        </li>
+                                        {% for i in color %}
                                         <li class="active">
                                             <div class="ec-sidebar-block-item"><span
-                                                    style="background-color:#2bff4a;"></span></div>
+                                                    style="background-color:{{ i.color }};"></span></div>
                                         </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item"><span
-                                                    style="background-color:#ff7c5e;"></span></div>
-                                        </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item"><span
-                                                    style="background-color:#f155ff;"></span></div>
-                                        </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item"><span
-                                                    style="background-color:#ffef00;"></span></div>
-                                        </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item"><span
-                                                    style="background-color:#c89fff;"></span></div>
-                                        </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item"><span
-                                                    style="background-color:#7bfffa;"></span></div>
-                                        </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item"><span
-                                                    style="background-color:#56ffc1;"></span></div>
-                                        </li>
+                                        {% endfor %}
+
                                     </ul>
                                 </div>
                             </div>

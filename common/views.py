@@ -11,9 +11,4 @@ class IndexView(TemplateView):
     template_name = 'index.html'
 
 
-class ShopListView(View):
-    def get(self, request, *args, **kwargs):
-        context = {
-            "product_ls": Product.objects.all()
-        }
-        return render(request, 'product_list.html', context)
+
