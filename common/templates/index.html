@@ -5,6 +5,17 @@
 {% block title %} Index page {% endblock %}
 
 {% block content %}
+{% for message in messages %}
+                    {% if message.tags == 'error' %}
+                        <div class="alert alert-danger" role="alert">
+                          {{ message }}
+                        </div>
+                    {% else %}
+                        <div class="alert alert-success" role="alert">
+                          {{ message }}
+                        </div>
+                    {% endif %}
+                    {% endfor %}
 <!-- ekka Cart Start -->
 <div class="ec-side-cart-overlay"></div>
 <div id="ec-side-cart" class="ec-side-cart">

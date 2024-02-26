@@ -113,9 +113,15 @@
                             <button class="dropdown-toggle" data-bs-toggle="dropdown"><i
                                     class="fi-rr-user"></i></button>
                             <ul class="dropdown-menu dropdown-menu-right">
+
+                                {% if user.is_authenticated %}
+                                <li><a class="dropdown-item" href="logout.html">Logout</a></li>
+                                {%else %}
                                 <li><a class="dropdown-item" href="register.html">Register</a></li>
-                                <li><a class="dropdown-item" href="checkout.html">Checkout</a></li>
                                 <li><a class="dropdown-item" href="login.html">Login</a></li>
+                                {% endif %}
+                                <li><a class="dropdown-item" href="checkout.html">Checkout</a></li>
+
                             </ul>
                         </div>
                         <!-- Header User End -->
@@ -126,7 +132,7 @@
                         </a>
                         <!-- Header Cart End -->
                         <!-- Header Cart Start -->
-                        <a href="#ec-side-cart" class="ec-header-btn ec-side-toggle">
+                        <a href="{% url 'order:cart' %}" class="ec-header-btn ec-side-toggle">
                             <div class="header-icon"><i class="fi-rr-shopping-bag"></i></div>
                             <span class="ec-header-count cart-count-lable">3</span>
                         </a>
@@ -162,9 +168,9 @@
                     <!-- Ec Header Search Start -->
                     <div class="align-self-center">
                         <div class="header-search">
-                            <form class="ec-btn-group-form" action="#">
+                            <form class="ec-btn-group-form" action="{% url 'common:search' %}" method="post">{% csrf_token %}
                                 <input class="form-control ec-search-bar" placeholder="Search products..."
-                                       type="text">
+                                       type="text" name="q">
                                 <button class="submit" type="submit"><i class="fi-rr-search"></i></button>
                             </form>
                         </div>
@@ -180,9 +186,15 @@
                                 <button class="dropdown-toggle" data-bs-toggle="dropdown"><i
                                         class="fi-rr-user"></i></button>
                                 <ul class="dropdown-menu dropdown-menu-right">
-                                    <li><a class="dropdown-item" href="register.html">Register</a></li>
+                                    {% if user.is_authenticated %}
+                                     <li><a class="dropdown-item">{{ user.username }}</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'logout_page' %}">Logout</a></li>
+                                    {%else %}
+                                    <li><a class="dropdown-item" href="{% url 'sign_up' %}">Register</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'login_page' %}">Login</a></li>
+                                    {% endif %}
                                     <li><a class="dropdown-item" href="checkout.html">Checkout</a></li>
-                                    <li><a class="dropdown-item" href="login.html">Login</a></li>
+
                                 </ul>
                             </div>
                             <!-- Header User End -->
@@ -193,7 +205,7 @@
                             </a>
                             <!-- Header wishlist End -->
                             <!-- Header Cart Start -->
-                            <a href="#ec-side-cart" class="ec-header-btn ec-side-toggle">
+                            <a href="{% url 'order:cart' %}" class="ec-header-btn">
                                 <div class="header-icon"><i class="fi-rr-shopping-bag"></i></div>
                                 <span class="ec-header-count cart-count-lable">3</span>
                             </a>
