@@ -48,10 +48,14 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     'product',
-    'common'
+    'common',
+    "order",
+    "users.apps.UsersConfig",
 ]
 
 INSTALLED_APPS = THIRD_PARTY_APPS + INSTALLED_APPS + LOCAL_APPS
+
+AUTH_USER_MODEL = 'users.CustomUser'
 
 MIDDLEWARE = [
     "django.middleware.locale.LocaleMiddleware",
@@ -90,9 +94,10 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite4',
+        'NAME': BASE_DIR / 'db.sqlite5',
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
