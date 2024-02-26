@@ -68,9 +68,9 @@ class AdminProduct(admin.ModelAdmin):
 
 @admin.register(Price)
 class AdminPrice(admin.ModelAdmin):
-    list_display = ["product", "id", "size", "color", "price", "count"]
-    search_fields = ["size__title", "color__title", "product__title"]
-    list_display_links = ["product", "id", "size", "color", "price", "count"]
-    list_filter = ["size", "color", "price", "count"]
-    autocomplete_fields = ["size", "color", "product"]
+    list_display = ["product", "id", "size", "price", "count"]
+    search_fields = ["size__title", "product__title"]
+    list_display_links = ["product", "id", "size", "price", "count"]
+    list_filter = ["size", "price", "count"]
+    autocomplete_fields = ["size", "product"]
     inlines = [ProductImageInline]
