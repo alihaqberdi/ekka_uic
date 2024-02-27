@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import User
+from users.models import CustomUser
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -16,11 +16,11 @@ def login_page(request):
     if request.method == "POST":
         username = request.POST.get("name")
         password = request.POST.get("password")
-        if not User.objects.filter(username=username).exists():
+        if not CustomUser.objects.filter(phone_number=username).exists():
             print("not exists")
             messages.error(request, "User Does not exists")
             return render(request, 'login.html')
-        user = authenticate(username=username, password=password)
+        user = authenticate(phone_number=username, password=password)
         print(user)
         if user:
             login(request, user)
@@ -39,13 +39,13 @@ def sign_up_page(request):
         last_name = request.POST.get("lastname")
         print(username, 1)
         print(password, 1)
-        if User.objects.filter(username=username).exists():
+        if CustomUser.objects.filter(phone_number=username).exists():
             messages.error(request, "bu user mavjud")
             return render(request, 'sign-up.html')
-        user = User.objects.create(
+        user = CustomUser.objects.create(
             first_name=first_name,
             last_name=last_name,
-            username=username
+            phone_number=username
         )
         user.set_password(password)
         user.save()
@@ -55,4 +55,4 @@ def sign_up_page(request):
 
 
 def profile(request):
-    return render(request, 'profile.html')
+    return render(request, 'user-profile.html')

@@ -47,13 +47,13 @@
                             </div> -->
                             <div class="ec-vendor-block-items">
                                 <ul>
-                                    <li><a href="user-profile.html">User Profile</a></li>
-                                    <li><a href="user-history.html">History</a></li>
-                                    <li><a href="wishlist.html">Wishlist</a></li>
-                                    <li><a href="cart.html">Cart</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
-                                    <li><a href="track-order.html">Track Order</a></li>
-                                    <li><a href="user-invoice.html">Invoice</a></li>
+                                    <li><a href="">User Profile</a></li>
+                                    <li><a href="">History</a></li>
+                                    <li><a href="">Wishlist</a></li>
+                                    <li><a href="{% url 'order:cart' %}">Cart</a></li>
+                                    <li><a href="">Checkout</a></li>
+                                    <li><a href="">Track Order</a></li>
+                                    <li><a href="">Invoice</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -68,14 +68,14 @@
                                 <div class="ec-vendor-block-profile">
                                     <div class="ec-vendor-block-img space-bottom-30">
                                         <div class="ec-vendor-block-bg">
-                                            <a href="#" class="btn btn-lg btn-primary"
+                                            <a href="" class="btn btn-lg btn-primary"
                                                data-link-action="editmodal" title="Edit Detail"
-                                               data-bs-toggle="modal" data-bs-target="#edit_modal">Edit Detail</a>
+                                               data-bs-toggle="modal" data-bs-target="">Edit Detail</a>
                                         </div>
                                         <div class="ec-vendor-block-detail">
-                                            <img class="v-img" src="assets/images/user/1.jpg" alt="vendor image">
-                                            <h5 class="name">Mariana Johns</h5>
-                                            <p>( Business Man )</p>
+                                            <img class="v-img" src="{{ user.image.url }}" alt="vendor image">
+                                            <h5 class="name">{{ user }}</h5>
+                                            <p>( {{ user.position_name }} )</p>
                                         </div>
                                         <p>Hello <span>Mariana Johns!</span></p>
                                         <p>From your account you can easily view and track orders. You can manage and

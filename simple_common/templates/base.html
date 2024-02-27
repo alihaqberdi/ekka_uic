@@ -190,7 +190,7 @@
                                         class="fi-rr-user"></i></button>
                                 <ul class="dropdown-menu dropdown-menu-right">
                                     {% if user.is_authenticated %}
-                                     <li><a class="dropdown-item" href="{% url 'profile' %}">{{ user.username }}</a></li>
+                                     <li><a class="dropdown-item" href="{% url 'profile' %}">{{ user.first_name }}</a></li>
                                     <li><a class="dropdown-item" href="{% url 'logout_page' %}">Logout</a></li>
                                     {%else %}
                                     <li><a class="dropdown-item" href="{% url 'sign_up' %}">Register</a></li>

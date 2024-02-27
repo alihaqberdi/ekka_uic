@@ -15,3 +15,6 @@ class CustomUser(AbstractUser):
     USERNAME_FIELD = 'phone_number'
     REQUIRED_FIELDS = []
     objects = UserManager()
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
