@@ -11,6 +11,10 @@ class Category(models.Model):
                             unique=True)
     parent = models.ForeignKey("self", on_delete=models.SET_NULL, null=True, blank=True)
 
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super(Category, self).save(*args, **kwargs)
+
     def __str__(self):
         return self.title
 
