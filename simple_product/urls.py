@@ -1,4 +1,4 @@
-from product.views import ShopListView, product_detail
+from simple_product.views import ShopListView, product_detail
 from django.urls import path
 
 app_name = 'product'

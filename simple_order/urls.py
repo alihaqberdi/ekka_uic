@@ -1,4 +1,4 @@
-from order.views import cart_view, add_cart_view
+from simple_order.views import cart_view, add_cart_view
 from django.urls import path
 
 app_name = 'order'

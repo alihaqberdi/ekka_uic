@@ -47,9 +47,9 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
-    'product',
-    'common',
-    "order",
+    'simple_product',
+    'simple_common',
+    "simple_order",
     "users.apps.UsersConfig",
 ]
 

@@ -1,7 +1,7 @@
-from common.views import IndexView, search_view
+from simple_common.views import IndexView, search_view
 from django.urls import path
 
-app_name = "common"
+app_name = 'common'
 
 urlpatterns = [
     path('', IndexView.as_view(), name="index"),

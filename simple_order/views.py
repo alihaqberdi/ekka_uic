@@ -1,9 +1,6 @@
 from django.shortcuts import render
-from django.shortcuts import redirect
+from simple_product.models import Product
 from django.urls import reverse
-
-from product.models import Product
-
 
 # Create your views here.
 
