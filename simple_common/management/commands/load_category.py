@@ -9,8 +9,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         with open('data/category.json', 'r') as file:
             data = json.load(file)
-            for i, item in enumerate(data):
-                print(item)
+            for item in data:
                 Category.objects.get_or_create(
                     **item
                 )

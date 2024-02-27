@@ -20,11 +20,12 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-    category = models.ManyToManyField(Category)
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, related_name='products', null=True)
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True)
     text = models.TextField()
     main_image = models.ImageField(null=True)
+    price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     count = models.PositiveIntegerField()
 
     @staticmethod

@@ -50,27 +50,23 @@
                                                  alt="view image">
                                         </a>
                                         <div class="single-product-cover">
-                                            {% for price in product.prices.all %}
-                                                {% for image in price.images.all %}
+                                            {% for image in product.images.all %}
                                                     <div class="single-slide">
                                                         <img width="100%" height="350" class="img-responsive"
-                                                             src="{{ image.image.url }}"
+                                                             src="{{ image.image }}"
                                                              alt="">
                                                     </div>
-                                                {% endfor %}
                                             {% endfor %}
 
                                         </div>
                                         <div class="single-nav-thumb">
-                                            {% for price in product.prices.all %}
-                                                {% for image in price.images.all %}
+                                                {% for image in product.images.all %}
                                                     <div class="single-slide">
                                                         <img width="100%" height="100" class="img-responsive"
-                                                             src="{{ image.image.url }}"
+                                                             src="{{ image.image }}"
                                                              alt="">
                                                     </div>
                                                 {% endfor %}
-                                            {% endfor %}
                                         </div>
                                     </div>
                                 </div>
@@ -90,32 +86,10 @@
                                         </div>
                                         <div class="ec-single-desc">{{ product.text|slice:255 }}...</div>
 
-                                        <div class="ec-single-sales">
-                                            <div class="ec-single-sales-inner">
-                                                <div class="ec-single-sales-title">sales accelerators</div>
-                                                <div class="ec-single-sales-visitor">real time <span>24</span> visitor
-                                                    right now!
-                                                </div>
-                                                <div class="ec-single-sales-progress">
-                                                    <span class="ec-single-progress-desc">Hurry up!left 29 in
-                                                        stock</span>
-                                                    <span class="ec-single-progressbar"></span>
-                                                </div>
-                                                <div class="ec-single-sales-countdown">
-                                                    <div class="ec-single-countdown"><span
-                                                            id="ec-single-countdown"></span></div>
-                                                    <div class="ec-single-count-desc">Time is Running Out!</div>
-                                                </div>
-                                            </div>
-                                        </div>
                                         <div class="ec-single-price-stoke">
                                             <div class="ec-single-price">
                                                 <span class="ec-single-ps-title">Narx:</span>
-                                                {% for price in product.prices.all %}
-                                                    {% if forloop.last %}
-                                                        <span class="new-price">{{ price.price }}</span>
-                                                    {% endif %}
-                                                {% endfor %}
+                                                <span class="new-price">{{ product.price }}</span>
                                             </div>
                                             <div class="ec-single-stoke">
                                                 <span class="ec-single-ps-title">IN STOCK</span>
