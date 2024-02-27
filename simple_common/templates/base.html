@@ -118,12 +118,12 @@
 
                                 {% if user.is_authenticated %}
                                 <li><a class="dropdown-item" href="">{{ user.username }}</a></li>
-                                <li><a class="dropdown-item" href="logout.html">Logout</a></li>
+                                <li><a class="dropdown-item" href="">Logout</a></li>
                                 {%else %}
-                                <li><a class="dropdown-item" href="register.html">Register</a></li>
-                                <li><a class="dropdown-item" href="login.html">Login</a></li>
+                                <li><a class="dropdown-item" href="">Register</a></li>
+                                <li><a class="dropdown-item" href="">Login</a></li>
                                 {% endif %}
-                                <li><a class="dropdown-item" href="checkout.html">Checkout</a></li>
+                                <li><a class="dropdown-item" href="">Checkout</a></li>
 
                             </ul>
                         </div>
@@ -190,7 +190,7 @@
                                         class="fi-rr-user"></i></button>
                                 <ul class="dropdown-menu dropdown-menu-right">
                                     {% if user.is_authenticated %}
-                                     <li><a class="dropdown-item">{{ user.username }}</a></li>
+                                     <li><a class="dropdown-item" href="{% url 'profile' %}">{{ user.username }}</a></li>
                                     <li><a class="dropdown-item" href="{% url 'logout_page' %}">Logout</a></li>
                                     {%else %}
                                     <li><a class="dropdown-item" href="{% url 'sign_up' %}">Register</a></li>

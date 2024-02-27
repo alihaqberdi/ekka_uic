@@ -52,3 +52,7 @@ def sign_up_page(request):
         messages.success(request, "User yaratildi")
         return redirect('login_page')
     return render(request, 'sign-up.html')
+
+
+def profile(request):
+    return render(request, 'profile.html')
