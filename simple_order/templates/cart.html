@@ -63,8 +63,18 @@
                                                     <td data-label="Quantity" class="ec-cart-pro-qty"
                                                         style="text-align: center;">
                                                         <div class="cart-qty-plus-minus">
-                                                            <input class="cart-plus-minus" type="text"
+                                                            <a href="">
+                                                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left" viewBox="0 0 16 16">
+  <path d="M10 12.796V3.204L4.519 8zm-.659.753-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753"/>
+</svg>
+                                                            </a>
+                                                            <input type="text"
                                                                 name="cartqtybutton" value="1" />
+                                                             <a href="">
+                                                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                                                  <path d="M6 12.796V3.204L11.481 8zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753"/>
+                                                                </svg>
+                                                             </a>
                                                         </div>
                                                     </td>
                                                     <td data-label="Total" class="ec-cart-pro-subtotal">$56.00</td>
@@ -72,73 +82,14 @@
                                                         <a href="#"><i class="ecicon eci-trash-o"></i></a>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td data-label="Product" class="ec-cart-pro-name"><a
-                                                            href="product-left-sidebar.html"><img
-                                                                class="ec-cart-pro-img mr-4"
-                                                                src="assets/images/product-image/2.jpg" alt="" />Unisex
-                                                            Fully Solid Hoodie</a></td>
-                                                    <td data-label="Price" class="ec-cart-pro-price"><span
-                                                            class="amount">$75.00</span></td>
-                                                    <td data-label="Quantity" class="ec-cart-pro-qty"
-                                                        style="text-align: center;">
-                                                        <div class="cart-qty-plus-minus">
-                                                            <input class="cart-plus-minus" type="text"
-                                                                name="cartqtybutton" value="1" />
-                                                        </div>
-                                                    </td>
-                                                    <td data-label="Total" class="ec-cart-pro-subtotal">$75.00</td>
-                                                    <td data-label="Remove" class="ec-cart-pro-remove">
-                                                        <a href="#"><i class="ecicon eci-trash-o"></i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td data-label="Product" class="ec-cart-pro-name"><a
-                                                            href="product-left-sidebar.html"><img
-                                                                class="ec-cart-pro-img mr-4"
-                                                                src="assets/images/product-image/3.jpg"
-                                                                alt="" />Beautiful T-shirt For Women</a></td>
-                                                    <td data-label="Price" class="ec-cart-pro-price"><span
-                                                            class="amount">$48.00</span></td>
-                                                    <td data-label="Quantity" class="ec-cart-pro-qty"
-                                                        style="text-align: center;">
-                                                        <div class="cart-qty-plus-minus">
-                                                            <input class="cart-plus-minus" type="text"
-                                                                name="cartqtybutton" value="1" />
-                                                        </div>
-                                                    </td>
-                                                    <td data-label="Total" class="ec-cart-pro-subtotal">$48.00</td>
-                                                    <td data-label="Remove" class="ec-cart-pro-remove">
-                                                        <a href="#"><i class="ecicon eci-trash-o"></i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td data-label="Product" class="ec-cart-pro-name"><a
-                                                            href="product-left-sidebar.html"><img
-                                                                class="ec-cart-pro-img mr-4"
-                                                                src="assets/images/product-image/4.jpg" alt="" />Wool
-                                                            Hat For Men</a></td>
-                                                    <td data-label="Price" class="ec-cart-pro-price"><span
-                                                            class="amount">$95.00</span></td>
-                                                    <td data-label="Quantity" class="ec-cart-pro-qty"
-                                                        style="text-align: center;">
-                                                        <div class="cart-qty-plus-minus">
-                                                            <input class="cart-plus-minus" type="text"
-                                                                name="cartqtybutton" value="1" />
-                                                        </div>
-                                                    </td>
-                                                    <td data-label="Total" class="ec-cart-pro-subtotal">$95.00</td>
-                                                    <td data-label="Remove" class="ec-cart-pro-remove">
-                                                        <a href="#"><i class="ecicon eci-trash-o"></i></a>
-                                                    </td>
-                                                </tr>
+
                                             </tbody>
                                         </table>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="ec-cart-update-bottom">
-                                                <a href="#">Continue Shopping</a>
+                                                <a href="{% url 'product:shop_list' %}">Continue Shopping</a>
                                                 <button class="btn btn-primary">Check Out</button>
                                             </div>
                                         </div>
