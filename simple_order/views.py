@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from simple_product.models import Product
 from django.urls import reverse
+from django.shortcuts import redirect
+
 
 # Create your views here.
 
@@ -13,9 +15,9 @@ def cart_view(request):
 
 
 def add_cart_view(request):
-    request.session.get('cart', [])
-    print(request.POST, "post")
-    print(request.POST.get('product'))
-    obj = Product.objects.get(slug=request.POST.get('product'))
+    if request.method == "POST":
+        print(request.session.get('cart'))
+        product_id = request.POST.get('product')
+        product_obj = Product.objects.get(id=product_id)
 
-    return reverse("product:detail", kwargs={"slug": obj.slug})
+        return redirect(reverse('product:detail', kwargs={'slug': product_obj.slug}))

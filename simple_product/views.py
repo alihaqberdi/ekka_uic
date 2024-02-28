@@ -23,6 +23,7 @@ class ShopListView(View):
 
 def product_detail(request, slug):
     obj = Product.objects.get(slug=slug)
+
     context = {
         "product": obj
     }
