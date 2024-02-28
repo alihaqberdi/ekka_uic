@@ -18,7 +18,5 @@ class Command(BaseCommand):
                     count=item['count'],
                     price=item['price'],
                     main_image=item['main_image']
-
                 )
-
         return 'Products loaded'

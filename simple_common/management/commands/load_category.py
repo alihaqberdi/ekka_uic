@@ -4,12 +4,14 @@ import json
 
 
 class Command(BaseCommand):
-    help = "Load category from csv file"
+    help = "Load category from json file"
 
     def handle(self, *args, **options):
         with open('data/category.json', 'r') as file:
             data = json.load(file)
             for item in data:
+                {"title": "EIFS"}
                 Category.objects.get_or_create(
                     **item
                 )
+        return "ok"
