@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from simple_product.models import Category
 from django.contrib.postgres.search import TrigramSimilarity
+from simple_common.forms import TestviyForm
 
 
 def all_pages_view(request):
@@ -38,3 +39,15 @@ def search_view(request):
         "category_ls": Category.objects.all(),
     }
     return render(request, "product_list.html", context)
+
+
+def testviy_view(request):
+    form = TestviyForm()
+    if request.method == "POST":
+        request.POST
+        form = TestviyForm(request.POST)
+        if form.is_valid():
+            form.save()
+    context = {}
+    context['form'] = form
+    return render(request, 'testviy.html', context)
