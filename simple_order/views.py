@@ -16,8 +16,15 @@ def cart_view(request):
 
 def add_cart_view(request):
     if request.method == "POST":
-        print(request.session.get('cart'))
         product_id = request.POST.get('product')
+        count = request.POST.get('num')
+        print(request.session["cart"])
         product_obj = Product.objects.get(id=product_id)
-
+        cart = request.session.get('cart', {})
+        if str(product_obj.id) in cart:
+            cart[str(product_obj.id)] += int(count)
+        else:
+            cart[str(product_obj.id)] = int(count)
+        request.session['cart'] = cart
+        print(request.session['cart'])
         return redirect(reverse('product:detail', kwargs={'slug': product_obj.slug}))

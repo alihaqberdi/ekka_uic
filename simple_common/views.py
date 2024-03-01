@@ -7,26 +7,19 @@ from django.contrib.postgres.search import TrigramSimilarity
 def all_pages_view(request):
     if request.user.is_authenticated:
         return {
-            "cart": None
+            "item_count_1": 0
         }
     else:
-        cart = request.session.get('cart')
-        data = request.POST
+        cart = request.session.get('cart', None)
         if cart:
-            if data.get('product') in cart:
-                val = cart[data.get('product')]
-                cart[data.get('product')] = int(val) + int(data.get("num"))
-                request.session["cart"] = cart
-                return {
-                    "cart": cart,
-                    "item_count": cart[data.get('product')]
-                }
-        else:
-            cart[data.get('product')] = data.get("num")
             return {
-                "cart": None,
-                "item_count": cart[data.get('product')]
+                "item_count_1": len(cart)
             }
+        else:
+            return {
+                "item_count_1": 0
+            }
+
 
 class IndexView(TemplateView):
     template_name = 'index.html'
