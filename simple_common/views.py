@@ -3,6 +3,9 @@ from django.views.generic import TemplateView
 from simple_product.models import Category
 from django.contrib.postgres.search import TrigramSimilarity
 from simple_common.forms import TestviyForm
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 
 def all_pages_view(request):
@@ -51,3 +54,29 @@ def testviy_view(request):
     context = {}
     context['form'] = form
     return render(request, 'testviy.html', context)
+
+
+@api_view(['GET', "POST"])
+def hello_world(request):
+    if request.method == "POST":
+        data = request.body
+        return Response(
+            {
+                "salom": data
+            },
+            status=204
+        )
+    return Response(
+        {"message": "Hello, world!"},
+        status=200
+    )
+
+
+class HelloWorldAPIView(APIView):
+    def get(self, request, *args, **kwargs):
+
+        return Response(
+            {
+                "message": "Hello APIView"
+            }
+        )

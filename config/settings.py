@@ -43,7 +43,8 @@ INSTALLED_APPS = [
 THIRD_PARTY_APPS = [
     "modeltranslation",
     'jazzmin',
-    'colorfield'
+    'colorfield',
+    'rest_framework',
 ]
 
 LOCAL_APPS = [
