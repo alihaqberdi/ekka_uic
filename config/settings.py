@@ -43,7 +43,9 @@ INSTALLED_APPS = [
 THIRD_PARTY_APPS = [
     "modeltranslation",
     'jazzmin',
-    'colorfield'
+    'colorfield',
+    'rest_framework',
+    'drf_yasg',
 ]
 
 LOCAL_APPS = [
@@ -98,7 +100,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite4',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
