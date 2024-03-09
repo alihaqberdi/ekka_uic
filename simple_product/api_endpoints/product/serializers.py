@@ -1,8 +1,5 @@
-from rest_framework.views import APIView
-from simple_product.models import Product, Category, ProductImage
-from rest_framework.generics import ListAPIView, RetrieveAPIView, DestroyAPIView
-from rest_framework.response import Response
 from rest_framework import serializers
+from simple_product.models import Product, Category, ProductImage
 
 
 class ProductImageSerializer(serializers.ModelSerializer):
@@ -47,27 +44,3 @@ class ProductListAPIViewSerializer(serializers.ModelSerializer):
 
     def get_total_amount(self, vals):
         return vals.price * vals.count
-
-
-class ProductListAPIView(ListAPIView):
-    queryset = Product.objects.all()
-    serializer_class = ProductListAPIViewSerializer
-
-
-class ProductRetrieveAPIView(RetrieveAPIView):
-    serializer_class = ProductListAPIViewSerializer
-    queryset = Product.objects.all()
-    lookup_field = "pk"
-
-
-class ProductDestroyAPIView(DestroyAPIView):
-    serializer_class = ProductListAPIViewSerializer
-    queryset = Product.objects.all()
-
-
-# def get(self, request, *args, **kwargs):
-#     data = Product.objects.all()
-#
-#     serializer = ProductListAPIViewSerializer(data, many=True)
-#
-#     return Response(serializer.data, status=200)
