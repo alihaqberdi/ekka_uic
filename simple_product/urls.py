@@ -1,6 +1,12 @@
 from simple_product.views import ShopListView, product_detail
-from django.urls import path
-from api_endpoints import ProductListAPIView, ProductRetrieveAPIView, ProductDestroyAPIView
+from django.urls import path, include
+from simple_product.api_endpoints import ProductListAPIView, ProductRetrieveAPIView, ProductDestroyAPIView, \
+    CategoryModelViewSet
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+
+router.register("Category", CategoryModelViewSet)
 
 app_name = 'product'
 
@@ -13,5 +19,6 @@ urlpatterns = [
 urlpatterns += [
     path("ProductListApiView/", ProductListAPIView.as_view()),
     path("ProductDetail/<int:pk>/", ProductRetrieveAPIView.as_view()),
-    path("ProductDestroy/<int:pk>/", ProductDestroyAPIView.as_view())
+    path("ProductDestroy/<int:pk>/", ProductDestroyAPIView.as_view()),
+    path("", include(router.urls))
 ]

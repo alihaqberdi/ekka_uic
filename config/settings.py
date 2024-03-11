@@ -45,6 +45,7 @@ THIRD_PARTY_APPS = [
     'jazzmin',
     'colorfield',
     'rest_framework',
+    "drf_yasg"
 ]
 
 LOCAL_APPS = [
