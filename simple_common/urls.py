@@ -7,6 +7,6 @@ urlpatterns = [
     path('', IndexView.as_view(), name="index"),
     path('SearchView/', search_view, name='search'),
     path("testviy/", testviy_view),
-    path("api/v1/hello-world/", hello_world),
-    path("api/v2/hello-world/", HelloWorldAPIView.as_view())
+    path("HelloWorld/api/v1/hello-world/", hello_world),
+    path("HelloWorld/api/v2/hello-world/", HelloWorldAPIView.as_view())
 ]
