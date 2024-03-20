@@ -44,3 +44,7 @@ class ProductListAPIViewSerializer(serializers.ModelSerializer):
 
     def get_total_amount(self, vals):
         return vals.price * vals.count
+
+    def validate(self, attrs):
+        print(attrs)
+        return attrs
