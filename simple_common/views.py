@@ -6,6 +6,7 @@ from simple_common.forms import TestviyForm
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from simple_common import tasks
 
 
 def all_pages_view(request):
@@ -44,6 +45,11 @@ def search_view(request):
     return render(request, "product_list.html", context)
 
 
+def more_time_task():
+    for i in range(10000000):
+        print(i)
+
+
 def testviy_view(request):
     form = TestviyForm()
     if request.method == "POST":
@@ -52,6 +58,7 @@ def testviy_view(request):
         if form.is_valid():
             form.save()
     context = {}
+    tasks.add.delay()
     context['form'] = form
     return render(request, 'testviy.html', context)
 
@@ -66,6 +73,7 @@ def hello_world(request):
             },
             status=204
         )
+
     return Response(
         {"message": "Hello, world!"},
         status=200
@@ -74,7 +82,6 @@ def hello_world(request):
 
 class HelloWorldAPIView(APIView):
     def get(self, request, *args, **kwargs):
-
         return Response(
             {
                 "message": "Hello APIView"

@@ -47,6 +47,7 @@ THIRD_PARTY_APPS = [
     'rest_framework',
     "drf_yasg",
     "rest_framework.authtoken",
+    "django_celery_results",
 ]
 
 LOCAL_APPS = [
@@ -174,3 +175,22 @@ REST_FRAMEWORK = {
     }
 
 }
+
+
+CELERY_BROKER_URL = env.str("CELERY_BROKER_URL", "redis://localhost:6379")
+CELERY_RESULT_BACKEND = env.str("CELERY_BROKER_URL", "redis://localhost:6379")
+
+CELERY_TIMEZONE = "Asia/Tashkent"
+
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
+
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": f"{env.str('REDIS_URL', 'redis://localhost:6379/0')}",
+        "KEY_PREFIX": "ekka",  # todo: you must change this with your project name or something else
+    }
+}
+
