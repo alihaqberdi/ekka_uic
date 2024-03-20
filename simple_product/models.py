@@ -40,6 +40,11 @@ class Product(models.Model):
             self.slug = self.__generate_slug(self.slug)
         super(Product, self).save(*args, **kwargs)
 
+    class Meta:
+        indexes = [
+            models.Index(fields=['title'])
+        ]
+
     def __str__(self):
         return self.title
 

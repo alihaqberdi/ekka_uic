@@ -17,8 +17,8 @@ urlpatterns = [
 
 """API URL"""
 urlpatterns += [
-    path("ProductListApiView/", ProductListAPIView.as_view()),
-    path("ProductDetail/<int:pk>/", ProductRetrieveAPIView.as_view()),
-    path("ProductDestroy/<int:pk>/", ProductDestroyAPIView.as_view()),
+    path("ProductListApiView/", ProductListAPIView.as_view(), name="product_list"),
+    path("ProductDetail/<int:pk>/", ProductRetrieveAPIView.as_view(), name="product_detail"),
+    path("ProductDestroy/<int:pk>/", ProductDestroyAPIView.as_view(), name="product_destroy"),
     path("", include(router.urls))
 ]
